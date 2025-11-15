@@ -19,7 +19,7 @@ import { useState } from "react";
 export default function Home() {
   const [input, setInput] = useState("");
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     setInput(event.target.value);
   };
 
@@ -32,7 +32,6 @@ export default function Home() {
           value={input}
           className="bg-zinc-800"
           onChange={handleInputChange}
-          className="mb-4"
         />
         <div className="flex flex-row gap-4">
           <CreateBlogPost setInput={setInput} />
@@ -66,7 +65,6 @@ const CreateBlogPost = ({ setInput }: any) => {
 const GetBlogPost = ({ setInput }: any) => {
   const handleClick = () => {
     try {
-      //TODO: GET LINTER
       const res = fetch(`../app/api/get-blog-post/`);
     } catch (error) {
       console.log(`error: ${error}`);
