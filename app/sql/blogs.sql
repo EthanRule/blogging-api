@@ -1,4 +1,4 @@
 CREATE TABLE blogs (
 	id serial,
-	contents json
+	contents text
 );

@@ -34,7 +34,7 @@ export default function Home() {
           onChange={handleInputChange}
         />
         <div className="flex flex-row gap-4">
-          <CreateBlogPost setInput={setInput} />
+          <CreateBlogPost input={input} />
           <GetBlogPost setInput={setInput} />
         </div>
       </div>
@@ -43,13 +43,23 @@ export default function Home() {
 }
 
 // TODO: replace any
-const CreateBlogPost = ({ setInput }: any) => {
+const CreateBlogPost = ({ input }: any) => {
   const handleClick = () => {
     try {
-      const res = fetch(`../app/api/create-blog-post/`);
+      const data = {
+        blog: input,
+      };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      };
+      const res = fetch(`/api/create-blog-post`, options);
+      console.log(res);
     } catch (error) {
       console.log(`error: ${error}`);
-      setInput(error);
     }
   };
   return (
